@@ -9,15 +9,17 @@ import { TariffService } from "./services";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { TariffSortPipe } from "./pipes/tariff-sort.pipe";
-import {MatIconModule} from "@angular/material/icon";
-import {SearchTariffFormComponent} from "./components/search-tariff-form/search-tariff-form.component";
+import { MatIconModule } from "@angular/material/icon";
+import { SearchTariffFormComponent } from "./components/search-tariff-form/search-tariff-form.component";
+import { ProviderItemComponent } from "./components/provider-item/provider-item.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     TariffManagerComponent,
     TariffSortPipe,
-    SearchTariffFormComponent
+    SearchTariffFormComponent,
+    ProviderItemComponent
   ],
   imports: [
     BrowserModule,

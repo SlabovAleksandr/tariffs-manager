@@ -1,0 +1,83 @@
+.tariff-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 1rem auto;
+  width: 60rem;
+  min-height: 15rem;
+  color: #666666;
+  border: solid 1px #DCDCDCFF;
+
+  .i- {
+    &upload, &download, &checked {
+      display: block;
+      width: 20px;
+    }
+
+    &arrow-down {
+      display: block;
+      width: 16px;
+    }
+  }
+}
+
+$widths: (
+  "w-20": 20%,
+  "w-35": 35%,
+  "w-45": 45%,
+);
+
+@each $width, $value in $widths {
+  .#{$width} {
+    width: $value;
+    padding: .6rem;
+
+    &:not(:last-child) {
+      border-right: 1px solid #DCDCDCFF;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+:host {
+  .row {
+    display: flex;
+    gap: 6px;
+    margin: 0.4rem 0;
+    font-size: .8rem;
+
+    mat-progress-bar {
+      margin-top: 5px;
+    }
+
+    .download ::ng-deep .mdc-linear-progress__bar-inner {
+      border-color: #00cc44 !important;
+    }
+
+    .upload ::ng-deep .mdc-linear-progress__bar-inner {
+      border-color: #33d6ff !important;
+    }
+
+    .speed-label {
+      width: 8rem;
+    }
+  }
+}
+
+.tariff-plan-info {
+  align-self: flex-end;
+  text-align: end;
+
+  .price-label {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .tariff-plan-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+}
