@@ -1,11 +1,14 @@
 import {Tariffs} from "../interfaces";
+import {TariffTypesEnum} from "../enum";
+
+export const TARIFF_SPEED_OPTIONS = [16, 50, 100, 250];
 
 export const TARIFFS_MOCK: Tariffs = {
   "providers": [
     {
       "name": "Provider A",
       "benefits": [1],
-      "type": "Fiber",
+      "type": TariffTypesEnum.Fiber,
       "price": 50,
       "contract_period": 12,
       "download_speed": 100,
@@ -15,7 +18,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider A",
       "benefits": [3],
-      "type": "Cable",
+      "type": TariffTypesEnum.Cable,
       "price": 40,
       "contract_period": 24,
       "download_speed": 50,
@@ -25,7 +28,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider A",
       "benefits": [],
-      "type": "DSL",
+      "type": TariffTypesEnum.DSL,
       "price": 30,
       "contract_period": 12,
       "download_speed": 16,
@@ -35,7 +38,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider B",
       "benefits": [2, 4],
-      "type": "Fiber",
+      "type": TariffTypesEnum.Fiber,
       "price": 60,
       "contract_period": 24,
       "download_speed": 100,
@@ -45,7 +48,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider B",
       "benefits": [],
-      "type": "Cable",
+      "type": TariffTypesEnum.Cable,
       "price": 45,
       "contract_period": 12,
       "download_speed": 100,
@@ -55,7 +58,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider B",
       "benefits": [1],
-      "type": "DSL",
+      "type": TariffTypesEnum.DSL,
       "price": 35,
       "contract_period": 24,
       "download_speed": 50,
@@ -65,7 +68,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider C",
       "benefits": [2, 3],
-      "type": "Fiber",
+      "type": TariffTypesEnum.Fiber,
       "price": 70,
       "contract_period": 12,
       "download_speed": 500,
@@ -75,7 +78,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider C",
       "benefits": [1],
-      "type": "Cable",
+      "type": TariffTypesEnum.Cable,
       "price": 50,
       "contract_period": 12,
       "download_speed": 100,
@@ -85,7 +88,7 @@ export const TARIFFS_MOCK: Tariffs = {
     {
       "name": "Provider C",
       "benefits": [4],
-      "type": "DSL",
+      "type": TariffTypesEnum.DSL,
       "price": 40,
       "contract_period": 24,
       "download_speed": 50,

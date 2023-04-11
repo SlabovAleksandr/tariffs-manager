@@ -4,15 +4,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TariffManagerComponent } from "./tariff-manager/tariff-manager.component";
-import { TariffService } from "./services/tariff.service";
+import { TariffManagerComponent } from "./components/tariff-manager/tariff-manager.component";
+import { TariffService } from "./services";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { TariffSortPipe } from "./pipes/tariff-sort.pipe";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TariffManagerComponent
+    TariffManagerComponent,
+    TariffSortPipe
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     ReactiveFormsModule,
     FormsModule,
     MatProgressBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [TariffService],
   bootstrap: [AppComponent]

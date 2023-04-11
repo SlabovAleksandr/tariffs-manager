@@ -1,0 +1,82 @@
+<div class="postal-code-card">
+  <h1>Internet</h1>
+  <div class="search-tariff-form">
+    <form (ngSubmit)="searchTariffs()">
+      <input [formControl]="postalCodeForm" name="redditSearch" type="number" placeholder="Postal code">
+    </form>
+  </div>
+
+  Select Internet Speed
+  <div class="internet-speed-container">
+    <div *ngFor="let speed of tariffSpeedOptions"
+         class="internet-speed-card"
+         [ngClass]="{ selected: selectedSpeed === speed}"
+         (click)="internetSpeedHandler(speed)">
+      {{ speed }} Mbit/s
+      </div>
+  </div>
+
+  <button (click)="searchTariffs()">COMPARE NOW</button>
+</div>
+
+<div class="tariffs-content">
+  <div class="tariffs-content-header">
+    <h1>Determined Tariffs</h1>
+    <div>
+      Type of connection:
+      <select [formControl]="tariffTypeForm">
+        <option [value]="''" selected>All</option>
+        <option *ngFor="let option of tariffTypeOptions" [value]="option.value">{{ option.value }}</option>
+      </select>
+    </div>
+    <div>
+      Sorted by:
+      <select [formControl]="tariffSortingForm">
+        <option *ngFor="let option of tariffSortingOptions"
+                [ngValue]="option">
+          {{ option.name }}: {{ option.order }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <ng-container *ngIf="(providers$ | async)?.length; else noResults">
+    <div *ngFor="let provider of providers$ | async | tariffSort: sortingSettings"
+         class="tariff-card">
+      <div class="w-20">
+        <h3>{{ provider.name }}</h3>
+      </div>
+      <div class="w-35">
+        <h4>Tariff Type</h4>
+        <div class="row">
+          <img class="i-download" src="../../../assets/img/download-icon.svg" alt="Download Icon">
+          <div class="speed-label">{{ provider.download_speed }} Mbit/s</div>
+          <mat-progress-bar class="download" mode="determinate" value="{{ provider.download_speed }}"></mat-progress-bar>
+        </div>
+        <div class="row">
+          <img class="i-upload" src="../../../assets/img/upload-icon.svg" alt="Upload Icon">
+          <div class="speed-label">{{ provider.upload_speed }} Mbit/s</div>
+          <mat-progress-bar class="upload" mode="determinate" value="{{ provider.upload_speed }}"></mat-progress-bar>
+        </div>
+        <div class="row" *ngFor="let benefit of provider.benefits">
+          <img class="i-checked" src="../../../assets/img/checked-icon.svg" alt="Checked Icon">
+          Tariff Benefit {{ benefit }}
+        </div>
+      </div>
+      <div class="w-45 tariff-plan-info">
+        <div class="price-label">{{ provider.price }} €</div>
+        <div>Avarage price for month</div>
+        <div>({{ provider.contract_period }} months)</div>
+        <div class="tariff-plan-actions">
+          <button>
+            <span>TARIFF DETAILS</span>
+            <img class="i-arrow-down" src="../../../assets/img/arrow-down.svg" alt="Details">
+          </button>
+          <button>TO TARIFF</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noResults>No Tariff is available for requested specifications</ng-template>
+</div>

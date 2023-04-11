@@ -1,7 +1,9 @@
+import { TariffTypesEnum } from "../enum";
+
 export interface Tariff {
   name: string;
   benefits: number[];
-  type: string;
+  type: TariffTypesEnum;
   price: number;
   contract_period: number;
   download_speed: number;
@@ -18,4 +20,10 @@ export interface Benefits {
 export interface Tariffs {
   providers: Tariff[];
   benefits: Benefits[];
+}
+
+export interface TariffSortOption {
+  name: string;
+  value: keyof Tariff;
+  order: 'asc' | 'desc';
 }
