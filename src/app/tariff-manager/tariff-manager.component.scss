@@ -1,0 +1,165 @@
+.postal-code-card {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  width: 20rem;
+  height: 15rem;
+  color: #666666;
+  border: solid 1px #DCDCDCFF;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.search-tariff-form {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-bottom: 0.8rem;
+
+  .i-search {
+    display: block;
+    position: absolute;
+    width: 20px;
+    right: 2px;
+    top: 2px;
+    padding: 8px;
+
+    &:hover {
+      background-color: #ededed;
+      cursor: pointer;
+    }
+  }
+  input {
+    width: 16rem;
+    padding: 10px 50px 10px 10px;
+  }
+}
+
+.internet-speed-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .2rem;
+  margin-bottom: .8rem;
+
+  .internet-speed-card {
+    display: flex;
+    width: auto;
+    padding: 0.5rem .8rem;
+    height: 1.5rem;
+    border: solid 1px #DCDCDCFF;
+    color: #000000;
+    font-size: .8rem;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #e6f3ff;
+    }
+  }
+}
+
+button {
+  padding: .5rem;
+  color: #666666;
+  background-color: #e6f3ff;
+  border-radius: 3px;
+  border: solid 1px #666666;
+
+  &:hover {
+    cursor: pointer;
+    color: #000000;
+    background-color: #cce6ff;
+  }
+}
+
+.tariffs-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  width: 60rem;
+  color: #666666;
+
+  .tariffs-content-header {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .tariff-card {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 1rem auto;
+    width: 60rem;
+    min-height: 15rem;
+    color: #666666;
+    border: solid 1px #DCDCDCFF;
+
+    .i- {
+      &upload, &download, &checked {
+        display: block;
+        width: 20px;
+      }
+    }
+  }
+}
+
+$widths: (
+  "w-20": 20%,
+  "w-35": 35%,
+  "w-45": 45%,
+);
+
+@each $width, $value in $widths {
+  .#{$width} {
+    width: $value;
+    padding: .6rem;
+
+    &:not(:last-child) {
+      border-right: 1px solid #DCDCDCFF;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+:host {
+  .row {
+    display: flex;
+    gap: 6px;
+    margin: 0.4rem 0;
+
+    .download ::ng-deep .mdc-linear-progress__bar-inner {
+      border-color: #00cc44 !important;
+    }
+
+    .upload ::ng-deep .mdc-linear-progress__bar-inner {
+      border-color: #33d6ff !important;
+    }
+  }
+}
+
+.tariff-plan-info {
+  align-self: flex-end;
+  text-align: end;
+
+  .price-label {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .tariff-plan-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+}
