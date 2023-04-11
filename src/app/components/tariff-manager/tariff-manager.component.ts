@@ -8,10 +8,10 @@ import {
   takeUntil,
 } from 'rxjs';
 import { TariffService } from '../../services';
-import {Tariff, TariffSortOption} from '../../interfaces';
+import { SearchTariffsPayload, Tariff, TariffSortOption } from '../../interfaces';
 import { TariffTypesEnum } from "../../enum";
 import { FormControl } from "@angular/forms";
-import {TARIFF_SPEED_OPTIONS} from "../../mocks";
+import { TARIFF_SPEED_OPTIONS } from "../../mocks";
 
 const defaultSortingValue: TariffSortOption = {
   name: 'Provider',
@@ -25,12 +25,11 @@ const defaultSortingValue: TariffSortOption = {
   styleUrls: ['./tariff-manager.component.scss']
 })
 export class TariffManagerComponent implements OnInit, OnDestroy {
-  public postalCodeForm = new FormControl('');
   public providers$: Observable<Tariff[]> = new Observable<Tariff[]>();
   public tariffTypeForm = new FormControl('');
   public tariffSortingForm = new FormControl(defaultSortingValue);
   public selectedSpeed = 0;
-  public triggerFiltering$ = new Subject<void>();
+  public triggerFiltering$ = new Subject<SearchTariffsPayload>();
 
   public tariffTypeOptions = [{
     value: TariffTypesEnum.DSL
@@ -80,14 +79,14 @@ export class TariffManagerComponent implements OnInit, OnDestroy {
     this.providers$ = combineLatest([
       this.tariffService.getTariffs(),
       this.tariffTypeForm.valueChanges.pipe(startWith('')),
-      this.triggerFiltering$.pipe(startWith(true)),
+      this.triggerFiltering$.pipe(startWith({ speed: 0, postalCode: 0 })),
     ]).pipe(
       takeUntil(this.destroyed$),
-      map(([tariffs, tariffTypeFilter]) => {
+      map(([tariffs, tariffTypeFilter, searchTariffsPayload]) => {
         return tariffs.providers.filter((provider) => {
           const isTypeRelevant = !tariffTypeFilter || provider.type === tariffTypeFilter;
-          const isSpeedRelevant = !this.selectedSpeed || provider.download_speed >= this.selectedSpeed;
-          const isPostalCodeRelevant = !this.postalCodeForm.value || provider.postcodes.includes(this.postalCodeForm.value.toString());
+          const isSpeedRelevant = !searchTariffsPayload.speed || provider.download_speed >= searchTariffsPayload.speed;
+          const isPostalCodeRelevant = !searchTariffsPayload.postalCode || provider.postcodes.includes(searchTariffsPayload.postalCode.toString());
 
           return isTypeRelevant && isSpeedRelevant && isPostalCodeRelevant;
         });
@@ -100,11 +99,7 @@ export class TariffManagerComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
-  public internetSpeedHandler(speed: number) {
-    this.selectedSpeed = speed === this.selectedSpeed ? 0 : speed;
-  }
-
-  public searchTariffs() {
-    this.triggerFiltering$.next();
+  public searchTariffs(result: SearchTariffsPayload) {
+    this.triggerFiltering$.next(result);
   }
 }

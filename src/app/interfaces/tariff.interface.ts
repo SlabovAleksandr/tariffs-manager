@@ -27,3 +27,8 @@ export interface TariffSortOption {
   value: keyof Tariff;
   order: 'asc' | 'desc';
 }
+
+export interface SearchTariffsPayload {
+  speed: number;
+  postalCode: number;
+}

@@ -10,12 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { TariffSortPipe } from "./pipes/tariff-sort.pipe";
 import {MatIconModule} from "@angular/material/icon";
+import {SearchTariffFormComponent} from "./components/search-tariff-form/search-tariff-form.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     TariffManagerComponent,
-    TariffSortPipe
+    TariffSortPipe,
+    SearchTariffFormComponent
   ],
   imports: [
     BrowserModule,

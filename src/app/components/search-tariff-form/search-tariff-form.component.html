@@ -1,0 +1,20 @@
+<div class="postal-code-card">
+  <h1>Internet</h1>
+  <div class="search-tariff-form">
+    <form (ngSubmit)="searchTariffs()">
+      <input [formControl]="postalCodeForm" name="redditSearch" type="number" placeholder="Postal code">
+    </form>
+  </div>
+
+  Select Internet Speed
+  <div class="internet-speed-container">
+    <div *ngFor="let speed of tariffSpeedOptions"
+         class="internet-speed-card"
+         [ngClass]="{ selected: selectedSpeed === speed}"
+         (click)="internetSpeedHandler(speed)">
+      {{ speed }} Mbit/s
+      </div>
+  </div>
+
+  <button (click)="searchTariffs()">COMPARE NOW</button>
+</div>

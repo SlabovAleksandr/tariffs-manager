@@ -37,3 +37,26 @@ $test-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button {
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+  color: #666666;
+  background-color: #e6f3ff;
+  border-radius: 3px;
+  border: solid 1px #666666;
+  gap: .3rem;
+
+  &:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+
+  &:hover:enabled {
+    cursor: pointer;
+    color: #000000;
+    background-color: #cce6ff;
+  }
+}

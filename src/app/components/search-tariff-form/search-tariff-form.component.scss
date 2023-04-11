@@ -1,0 +1,53 @@
+.postal-code-card {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 1rem;
+  width: 20rem;
+  height: 15rem;
+  color: #666666;
+  border: solid 1px #DCDCDCFF;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.search-tariff-form {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-bottom: 0.8rem;
+
+  input {
+    width: 16rem;
+    padding: .8rem;
+  }
+}
+
+.internet-speed-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .2rem;
+  margin-bottom: .8rem;
+
+  .internet-speed-card {
+    display: flex;
+    width: auto;
+    padding: 0.5rem .8rem;
+    height: 1.5rem;
+    border: solid 1px #DCDCDCFF;
+    color: #000000;
+    font-size: .8rem;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #e6f3ff;
+    }
+
+    &.selected {
+      background-color: #3399ff;
+    }
+  }
+}
