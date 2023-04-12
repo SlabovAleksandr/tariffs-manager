@@ -1,7 +1,45 @@
-import {Tariffs} from "../interfaces";
+import {Tariffs, TariffSortOption} from "../interfaces";
 import {TariffTypesEnum} from "../enum";
 
 export const TARIFF_SPEED_OPTIONS = [16, 50, 100, 250];
+
+export const TARIFF_TYPE_OPTIONS = [{
+  value: TariffTypesEnum.DSL
+}, {
+  value: TariffTypesEnum.Cable
+}, {
+  value: TariffTypesEnum.Fiber
+}];
+
+export const DEFAULT_TARIFF_SORTING_OPTION: TariffSortOption = {
+  name: 'Provider',
+  value: 'name',
+  order: 'asc'
+};
+
+export const TARIFF_SORTING_OPTIONS: TariffSortOption[] = [
+  DEFAULT_TARIFF_SORTING_OPTION,
+  {
+    name: 'Provider',
+    value: 'name',
+    order: 'desc'
+  }, {
+    name: 'Connection Type',
+    value: 'type',
+    order: 'asc'
+  }, {
+    name: 'Connection Type',
+    value: 'type',
+    order: 'desc'
+  }, {
+    name: 'Price',
+    value: 'price',
+    order: 'asc'
+  }, {
+    name: 'Price',
+    value: 'price',
+    order: 'desc'
+  }];
 
 export const TARIFFS_MOCK: Tariffs = {
   "providers": [

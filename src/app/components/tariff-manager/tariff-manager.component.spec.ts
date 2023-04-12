@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TariffManagerComponent } from "./tariff-manager.component";
 
-import { TariffManagerComponent } from './gallery.component';
-
-describe('GalleryComponent', () => {
+describe('TariffManagerComponent', () => {
   let component: TariffManagerComponent;
   let fixture: ComponentFixture<TariffManagerComponent>;
 

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from "@angular/forms";
 import {
   combineLatest,
   map,
@@ -9,15 +10,12 @@ import {
 } from 'rxjs';
 import { TariffService } from '../../services';
 import { SearchTariffsPayload, Tariff, TariffSortOption } from '../../interfaces';
-import { TariffTypesEnum } from "../../enum";
-import { FormControl } from "@angular/forms";
-import { TARIFF_SPEED_OPTIONS } from "../../mocks";
-
-const defaultSortingValue: TariffSortOption = {
-  name: 'Provider',
-  value: 'name',
-  order: 'asc'
-};
+import {
+  DEFAULT_TARIFF_SORTING_OPTION,
+  TARIFF_SORTING_OPTIONS,
+  TARIFF_SPEED_OPTIONS,
+  TARIFF_TYPE_OPTIONS
+} from "../../mocks";
 
 @Component({
   selector: 'tariff-manager',
@@ -27,46 +25,16 @@ const defaultSortingValue: TariffSortOption = {
 export class TariffManagerComponent implements OnInit, OnDestroy {
   public providers$: Observable<Tariff[]> = new Observable<Tariff[]>();
   public tariffTypeForm = new FormControl('');
-  public tariffSortingForm = new FormControl(defaultSortingValue);
+  public tariffSortingForm = new FormControl(DEFAULT_TARIFF_SORTING_OPTION);
   public selectedSpeed = 0;
   public triggerFiltering$ = new Subject<SearchTariffsPayload>();
 
-  public tariffTypeOptions = [{
-    value: TariffTypesEnum.DSL
-  }, {
-    value: TariffTypesEnum.Cable
-  }, {
-    value: TariffTypesEnum.Fiber
-  }];
-
-  public tariffSortingOptions: TariffSortOption[] = [
-    defaultSortingValue,
-  {
-    name: 'Provider',
-    value: 'name',
-    order: 'desc'
-  }, {
-    name: 'Connection Type',
-    value: 'type',
-    order: 'asc'
-  }, {
-    name: 'Connection Type',
-    value: 'type',
-    order: 'desc'
-  }, {
-    name: 'Price',
-    value: 'price',
-    order: 'asc'
-  }, {
-    name: 'Price',
-    value: 'price',
-    order: 'desc'
-  }];
-
+  public readonly tariffTypeOptions = TARIFF_TYPE_OPTIONS;
+  public readonly tariffSortingOptions: TariffSortOption[] = TARIFF_SORTING_OPTIONS;
   public readonly tariffSpeedOptions = TARIFF_SPEED_OPTIONS;
 
   public get sortingSettings() {
-    return this.tariffSortingForm.getRawValue() ?? defaultSortingValue;
+    return this.tariffSortingForm.getRawValue() ?? DEFAULT_TARIFF_SORTING_OPTION;
   }
 
   private destroyed$ = new Subject<void>();

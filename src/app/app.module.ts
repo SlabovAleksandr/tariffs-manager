@@ -1,36 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TariffManagerComponent } from "./components/tariff-manager/tariff-manager.component";
-import { TariffService } from "./services";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { TariffSortPipe } from "./pipes/tariff-sort.pipe";
-import { MatIconModule } from "@angular/material/icon";
-import { SearchTariffFormComponent } from "./components/search-tariff-form/search-tariff-form.component";
-import { ProviderItemComponent } from "./components/provider-item/provider-item.component";
+import {TariffManagerModule} from "./components/tariff-manager/tariff-manager.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TariffManagerComponent,
-    TariffSortPipe,
-    SearchTariffFormComponent,
-    ProviderItemComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatProgressBarModule,
     BrowserAnimationsModule,
-    MatIconModule
+    TariffManagerModule
   ],
-  providers: [TariffService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
