@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {Benefit, Tariff} from '../../interfaces';
+import { Benefit, Tariff } from '../../interfaces';
 
 @Component({
   selector: 'tariff-details',

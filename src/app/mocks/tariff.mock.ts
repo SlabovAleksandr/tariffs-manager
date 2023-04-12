@@ -1,5 +1,5 @@
-import {Tariffs, TariffSortOption} from "../interfaces";
-import {TariffTypesEnum} from "../enum";
+import { Tariffs, TariffSortOption } from "../interfaces";
+import { TariffTypesEnum } from "../enum";
 
 export const TARIFF_SPEED_OPTIONS = [16, 50, 100, 250];
 

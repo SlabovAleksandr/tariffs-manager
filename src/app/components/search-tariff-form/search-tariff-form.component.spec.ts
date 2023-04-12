@@ -21,4 +21,20 @@ describe('SearchTariffFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('internetSpeedHandler() set works correctly', () => {
+    component.selectedSpeed = 0;
+
+    component.internetSpeedHandler(16);
+
+    expect(component.selectedSpeed).toEqual(16);
+  });
+
+  it('internetSpeedHandler() unset works correctly', () => {
+    component.selectedSpeed = 16;
+
+    component.internetSpeedHandler(16);
+
+    expect(component.selectedSpeed).toEqual(0);
+  });
 });
