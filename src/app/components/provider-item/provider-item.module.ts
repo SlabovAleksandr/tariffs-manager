@@ -3,6 +3,7 @@ import { ProviderItemComponent } from "./provider-item.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {TariffDetailsModule} from "../tariff-details/tariff-details.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
   imports: [
     CommonModule,
     RouterModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    TariffDetailsModule
   ],
   providers: [],
   exports: [

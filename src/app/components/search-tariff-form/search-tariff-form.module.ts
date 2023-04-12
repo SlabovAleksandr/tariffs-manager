@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import {SearchTariffFormComponent} from "./search-tariff-form.component";
-import {CommonModule} from "@angular/common";
-import {RouterModule} from "@angular/router";
-import {ReactiveFormsModule} from "@angular/forms";
+import { SearchTariffFormComponent } from "./search-tariff-form.component";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [

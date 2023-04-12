@@ -41,12 +41,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button {
   display: flex;
   justify-content: center;
+  height: 2.2rem;
   padding: .5rem;
   color: #666666;
   background-color: #e6f3ff;
   border-radius: 3px;
   border: solid 1px #666666;
   gap: .3rem;
+  z-index: 9;
 
   &:disabled {
     border: 1px solid #999999;
@@ -58,5 +60,28 @@ button {
     cursor: pointer;
     color: #000000;
     background-color: #cce6ff;
+  }
+
+  &.active {
+    border-bottom: none;
+    height: 2.6rem;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 10px;
+  }
+}
+
+.i- {
+  &upload, &download, &checked {
+    display: block;
+    width: 20px;
+  }
+
+  &arrow-down {
+    display: block;
+    width: 16px;
   }
 }

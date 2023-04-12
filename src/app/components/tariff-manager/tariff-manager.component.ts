@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import {
   combineLatest,
@@ -6,10 +6,9 @@ import {
   Observable,
   startWith,
   Subject,
-  takeUntil,
 } from 'rxjs';
 import { TariffService } from '../../services';
-import { SearchTariffsPayload, Tariff, TariffSortOption } from '../../interfaces';
+import { SearchTariffsPayload, Tariff, TariffSortOption} from '../../interfaces';
 import {
   DEFAULT_TARIFF_SORTING_OPTION,
   TARIFF_SORTING_OPTIONS,
@@ -22,7 +21,7 @@ import {
   templateUrl: './tariff-manager.component.html',
   styleUrls: ['./tariff-manager.component.scss']
 })
-export class TariffManagerComponent implements OnInit, OnDestroy {
+export class TariffManagerComponent implements OnInit {
   public providers$: Observable<Tariff[]> = new Observable<Tariff[]>();
   public tariffTypeForm = new FormControl('');
   public tariffSortingForm = new FormControl(DEFAULT_TARIFF_SORTING_OPTION);
@@ -37,8 +36,6 @@ export class TariffManagerComponent implements OnInit, OnDestroy {
     return this.tariffSortingForm.getRawValue() ?? DEFAULT_TARIFF_SORTING_OPTION;
   }
 
-  private destroyed$ = new Subject<void>();
-
   constructor(
     private tariffService: TariffService
   ) {}
@@ -49,7 +46,6 @@ export class TariffManagerComponent implements OnInit, OnDestroy {
       this.tariffTypeForm.valueChanges.pipe(startWith('')),
       this.triggerFiltering$.pipe(startWith({ speed: 0, postalCode: 0 })),
     ]).pipe(
-      takeUntil(this.destroyed$),
       map(([tariffs, tariffTypeFilter, searchTariffsPayload]) => {
         return tariffs.providers.filter((provider) => {
           const isTypeRelevant = !tariffTypeFilter || provider.type === tariffTypeFilter;
@@ -60,11 +56,6 @@ export class TariffManagerComponent implements OnInit, OnDestroy {
         });
       })
     );
-  }
-
-  public ngOnDestroy() {
-    this.destroyed$.next();
-    this.destroyed$.complete();
   }
 
   public searchTariffs(result: SearchTariffsPayload) {

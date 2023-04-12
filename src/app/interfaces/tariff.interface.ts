@@ -11,7 +11,7 @@ export interface Tariff {
   postcodes: string[];
 }
 
-export interface Benefits {
+export interface Benefit {
   id: number;
   name: string;
   description: string;
@@ -19,7 +19,7 @@ export interface Benefits {
 
 export interface Tariffs {
   providers: Tariff[];
-  benefits: Benefits[];
+  benefits: Benefit[];
 }
 
 export interface TariffSortOption {

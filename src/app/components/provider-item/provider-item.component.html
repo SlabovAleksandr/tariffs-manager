@@ -16,7 +16,7 @@
     </div>
     <div class="row" *ngFor="let benefit of provider.benefits">
       <img class="i-checked" src="../../../assets/img/checked-icon.svg" alt="Checked Icon">
-      Tariff Benefit {{ benefit }}
+      {{ getTariffBenefitName(benefit) }}
     </div>
   </div>
   <div class="w-45 tariff-plan-info">
@@ -24,11 +24,13 @@
     <div>Avarage price for month</div>
     <div>({{ provider.contract_period }} months)</div>
     <div class="tariff-plan-actions">
-      <button>
+      <button [ngClass]="{ 'active': showTariffDetails }" (click)="showTariffDetails = !showTariffDetails">
         <span>TARIFF DETAILS</span>
         <img class="i-arrow-down" src="../../../assets/img/arrow-down.svg" alt="Details">
       </button>
-      <button>TO TARIFF</button>
+      <tariff-details *ngIf="showTariffDetails"
+                      [provider]="provider"
+                      [benefits]="benefits"></tariff-details>
     </div>
   </div>
 </div>

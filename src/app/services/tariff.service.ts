@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
-import { Tariffs } from "../interfaces";
+import { map, Observable, Subscriber } from 'rxjs';
+import { Benefit, Tariffs } from "../interfaces";
 import { TARIFFS_MOCK } from "../mocks";
 
 @Injectable({
@@ -16,5 +16,10 @@ export class TariffService {
         subscriber.complete();
       }, 1000);
     });
+  }
+
+  public getBenefits(): Observable<Benefit[] | undefined> {
+    return this.getTariffs()
+      .pipe(map((tariffs) => tariffs.benefits));
   }
 }

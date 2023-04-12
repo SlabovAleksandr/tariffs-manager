@@ -2,22 +2,10 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto 1rem auto;
-  width: 60rem;
+  max-width: 60rem;
   min-height: 15rem;
   color: #666666;
   border: solid 1px #DCDCDCFF;
-
-  .i- {
-    &upload, &download, &checked {
-      display: block;
-      width: 20px;
-    }
-
-    &arrow-down {
-      display: block;
-      width: 16px;
-    }
-  }
 }
 
 $widths: (
@@ -77,6 +65,7 @@ $widths: (
   .tariff-plan-actions {
     display: flex;
     justify-content: flex-end;
+    height: 3rem;
     padding: 1rem 0;
     gap: 1rem;
   }

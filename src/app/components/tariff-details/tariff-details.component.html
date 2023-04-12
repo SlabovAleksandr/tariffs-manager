@@ -1,0 +1,48 @@
+<ng-container *ngIf="provider">
+  <div class="tariff-details-header">
+    <div [ngClass]="{ 'active': activeTab === 1}" (click)="setTab(1)">Tariff Details</div>
+    <div [ngClass]="{ 'active': activeTab === 2}" (click)="setTab(2)">Internet Speed</div>
+    <div [ngClass]="{ 'active': activeTab === 3}" (click)="setTab(3)">Benefits</div>
+  </div>
+
+  <div *ngIf="activeTab === 1" class="details-content">
+    <table>
+      <tr>
+        <th>Tariff Costs</th>
+        <th>One time</th>
+        <th>Ongoing</th>
+      </tr>
+      <tr>
+        <td>Basic fee for {{ provider.contract_period }} Months</td>
+        <td>-</td>
+        <td>{{ provider.price ? provider.price + ' €' : '-' }}</td>
+      </tr>
+      <tr>
+        <td>Modem/Router</td>
+        <td>99.99 €</td>
+        <td>-</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="activeTab === 2" class="internet-speed-content">
+    <div class="row">
+      <img class="i-download" src="../../../assets/img/download-icon.svg" alt="Download Icon">
+      <div class="speed-label">{{ provider.download_speed }} Mbit/s</div>
+      <mat-progress-bar class="download" mode="determinate" value="{{ provider.download_speed }}"></mat-progress-bar>
+    </div>
+    <div class="row">
+      <img class="i-upload" src="../../../assets/img/upload-icon.svg" alt="Upload Icon">
+      <div class="speed-label">{{ provider.upload_speed }} Mbit/s</div>
+      <mat-progress-bar class="upload" mode="determinate" value="{{ provider.upload_speed }}"></mat-progress-bar>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 3" class="benefits-content">
+    <div *ngFor="let benefit of provider.benefits" class="row">
+      <img class="i-checked" src="../../../assets/img/checked-icon.svg" alt="Checked Icon">
+      {{ getTariffBenefitName(benefit) }}
+    </div>
+    <div *ngIf="!provider.benefits.length" class="row">No benefits defined</div>
+  </div>
+</ng-container>
