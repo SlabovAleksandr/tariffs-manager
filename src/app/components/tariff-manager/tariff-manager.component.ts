@@ -49,7 +49,7 @@ export class TariffManagerComponent implements OnInit {
       map(([tariffs, tariffTypeFilter, searchTariffsPayload]) => {
         return tariffs.providers.filter((provider) => {
           const isTypeRelevant = !tariffTypeFilter || provider.type === tariffTypeFilter;
-          const isSpeedRelevant = !searchTariffsPayload.speed || provider.download_speed >= searchTariffsPayload.speed;
+          const isSpeedRelevant = !searchTariffsPayload.speed || provider.download_speed === searchTariffsPayload.speed;
           const isPostalCodeRelevant = !searchTariffsPayload.postalCode || provider.postcodes.includes(searchTariffsPayload.postalCode.toString());
 
           return isTypeRelevant && isSpeedRelevant && isPostalCodeRelevant;
