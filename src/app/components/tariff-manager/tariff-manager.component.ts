@@ -12,7 +12,6 @@ import { SearchTariffsPayload, Tariff, TariffSortOption} from '../../interfaces'
 import {
   DEFAULT_TARIFF_SORTING_OPTION,
   TARIFF_SORTING_OPTIONS,
-  TARIFF_SPEED_OPTIONS,
   TARIFF_TYPE_OPTIONS
 } from "../../mocks";
 
@@ -25,12 +24,10 @@ export class TariffManagerComponent implements OnInit {
   public providers$: Observable<Tariff[]> = new Observable<Tariff[]>();
   public tariffTypeForm = new FormControl('');
   public tariffSortingForm = new FormControl(DEFAULT_TARIFF_SORTING_OPTION);
-  public selectedSpeed = 0;
   public triggerFiltering$ = new Subject<SearchTariffsPayload>();
 
   public readonly tariffTypeOptions = TARIFF_TYPE_OPTIONS;
   public readonly tariffSortingOptions: TariffSortOption[] = TARIFF_SORTING_OPTIONS;
-  public readonly tariffSpeedOptions = TARIFF_SPEED_OPTIONS;
 
   public get sortingSettings() {
     return this.tariffSortingForm.getRawValue() ?? DEFAULT_TARIFF_SORTING_OPTION;
